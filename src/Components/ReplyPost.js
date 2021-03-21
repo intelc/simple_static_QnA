@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {Form, Button} from 'react-bootstrap'
 const ReplyPost = ({replyName, onReply, lastId,cleanUp}) => {
     const [name, setName]=useState('')
-    const [post, setPost] = useState(`@${replyName}`)
+    const [post, setPost] = useState(`@${replyName} `)
     const onSubmit=(e)=>{
         e.preventDefault()
         if(!name||!post){
@@ -26,7 +26,7 @@ const ReplyPost = ({replyName, onReply, lastId,cleanUp}) => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Control as='textarea' placeholder='Write a new post...'value = {post}
-                    onChange={(e)=>setPost(e.target.value)}/>
+                    onChange={(e)=>setPost(e.target.value)} onfocus="this.value = this.value;"/>
                 </Form.Group>
                 <Button className='float-right' variant="primary" type="submit">
                     Submit
