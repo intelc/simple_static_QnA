@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Components/Header'
+import NewPost from './Components/NewPost'
+import Reply from './Components/Reply'
+import {Button,Toast} from 'react-bootstrap'
+import {useState} from 'react'
 
 function App() {
+  const [thread, setThread] = useState([])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='d-flex flex-column'>
+      <div className= 'd-flex justify-content-center' style={{padding:50}}>
+        <Header text='🎉CIS 197 Community🎉'/>
+      </div>
+      <NewPost onAdd={(data)=>setThread([...thread,data])} lastId = {thread.length}/>
+      <br/>
+      <div >
+                {thread.map((entry)=>(
+                  <div className='container shadow' style={{marginTop:30}}>
+                    <Reply className='shadow' name = {entry.name} post = {entry.post}/>
+                    </div>
+                )
+
+                )}
+      </div>
     </div>
   );
 }
