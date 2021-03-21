@@ -17,7 +17,7 @@ const NewPost = ({onAdd,lastId}) => {
         setPost('')
     }
     return (
-        <div className='container shadow-lg rounded-lg' style={{padding:20}}>
+        <div className='container shadow-lg rounded-lg' style={{padding:20, backgroundColor:'white'}}>
             <Form onSubmit={onSubmit}>
                 <Form.Group>
                     <Form.Label className='font-weight-bold' style={{fontSize:30}}>New Post</Form.Label>
