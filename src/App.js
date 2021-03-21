@@ -7,6 +7,7 @@ import {useState} from 'react'
 
 function App() {
   const [thread, setThread] = useState([])
+  const depth=0
   return (
     <div style={{ 
       backgroundImage: `url("https://i.kym-cdn.com/photos/images/newsfeed/000/581/296/c09.jpg")`,imageStyle:'opacity:0.1' 
@@ -22,7 +23,7 @@ function App() {
       <div >
                 {thread.map((entry)=>(
                   <div className='container shadow rounded-lg' style={{marginTop:30,backgroundColor:'white'}}>
-                    <Reply className='shadow' name = {entry.name} post = {entry.post}/>
+                    <Reply className='shadow' name = {entry.name} post = {entry.post} depth={depth} />
                     </div>
                 )
 

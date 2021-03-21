@@ -7,13 +7,18 @@ import NewPost from './NewPost';
 import ReplyPost from './ReplyPost';
 
 
-const Reply = ({name,post}) => {
+const Reply = ({name,post,depth}) => {
     const [thread, setThread] = useState([])
     const [counter, setCounter] = useState(0)
     const [replyInput, setReplyInput] = useState(false)
+    let replyTrue = true
+    if(depth>=2){
+        replyTrue= false
+    }
     const addReply = (data)=>{
         setThread([...thread, data])
     }
+    
     return (
         <Container style={{padding:20,paddingBottom:5}}> 
             <Row>
@@ -38,19 +43,19 @@ const Reply = ({name,post}) => {
 
                 <Col style={{borderLeft: '2px solid rgba(0, 0, 0, 0.1)', paddingRight:0, marginRight:0}}>
                     {thread.map((entry)=>(
-                        <Reply name = {entry.name} post = {entry.post} style={{padding:20}} />
+                        <Reply name = {entry.name} post = {entry.post} style={{padding:20}} depth={depth+1} />
                     )
 
                     )}
                 </Col>
                 
             </Row>
-            <Row>
+            {replyTrue && <Row>
                 <div className='float-left d-flex flex-row' onClick={()=>setReplyInput(!replyInput)}>
                         <div className='p-2'><BiComment style={{position:'relative', top:0, left:8, color:'gray'}} /> </div> 
                         <div className='p-2'><p style={{position:'relative', top:1, right:5, color:'gray'}}>Reply</p></div>
                     </div>
-                </Row>
+                </Row>}
             
             
             {replyInput && <Row>
