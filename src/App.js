@@ -10,7 +10,7 @@ function App() {
   return (
     <div className='d-flex flex-column'>
       <div className= 'd-flex justify-content-center' style={{padding:50}}>
-        <Header text='🎉CIS 197 Community🎉'/>
+        <Header text="What's Your Favourite Emoji🥺"/>
       </div>
       <NewPost onAdd={(data)=>setThread([...thread,data])} lastId = {thread.length}/>
       <br/>
